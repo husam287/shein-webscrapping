@@ -20,8 +20,9 @@ app.use('/api/shein', webScrapRouter);
 
 
 app.use(errorMiddelware);
+
 app.listen(process.env.PORT || 8080, () => {
-    console.log('Example app listening on port port!');
+    console.log(`Example app listening on port ${process.env.PORT || 8080}!`);
 });
 
 //Run app, then load http://localhost:port in a browser to see the output.
