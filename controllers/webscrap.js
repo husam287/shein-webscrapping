@@ -18,9 +18,9 @@ exports.getDetails = async (req, res, next) => {
     request(newUrl, async (error, response, html) => {
         if (!error && response.statusCode == 200) {
             let price = extractPrice(html);
-            let correctedPrice = await getCurrencyDataAndCorrectThePrice(price);
-            correctedPrice = correctedPrice.toFixed(2);
-            res.json({ productName: productName, price: correctedPrice });
+            //let correctedPrice = await getCurrencyDataAndCorrectThePrice(price);
+            //correctedPrice = correctedPrice.toFixed(2);
+            res.json({ productName: productName, price: price });
         }
     });
 
@@ -72,7 +72,7 @@ function redirect(url = "") {
                 const $ = cheerio.load(html);
                 let title = $('title').text();
 
-                const newUrl = "https://www.shein.com/" + title.split(' ').join('-') + '-p-' + idValue + '.html';
+                const newUrl = "https://ar.shein.com/" + title.split(' ').join('-') + '-p-' + idValue + '.html';
                 resolve({ newUrl: newUrl, productName: title });
             } else {
                 reject(error);
@@ -92,7 +92,6 @@ function redirect(url = "") {
  */
 function extractPrice(html) {
     const theWholeString = html;
-
     const amountText = `"salePrice":{"amount":"`;
     const amountTextIndex = theWholeString.indexOf(amountText);
     const cuttedText = theWholeString.substr(amountTextIndex + amountText.length, 100);

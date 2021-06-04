@@ -11,8 +11,7 @@ const app = express();
 
 app.use(helmet());
 app.use(allowHeaders);
-app.use(bodyParser.json());
-
+app.use(express.json());
 
 
 app.use('/api/shein', webScrapRouter);
