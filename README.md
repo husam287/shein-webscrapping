@@ -20,14 +20,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 2) Make sure you have the latest version of [Node.js](https://nodejs.org/en/) in your machine.
 
-3) Navigate to this repo that you have downloaded.
-
-4) Open terminal and type:
+3) Open terminal in the root folder and type:
     ```bash
         npm install
     ```
 
-5) Let's start the server
+4) Let's start the server
     ```bash
         npm start
     ```
@@ -36,11 +34,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## APIS ##
 **GET PRODUCT NAME & PRICE**
-- Link
+- Link:
     http://localhost:8080/api/shein/get
 
-- Method
-    POST
+- Method:
+    **POST**
 
 - Request body:
     ```js
@@ -49,11 +47,14 @@ These instructions will get you a copy of the project up and running on your loc
     }
     ```
 
-- Response
+- Response:
+    ```js
+
     {
         "productName": "Cartoon Print Drop Shoulder Sweatshirt",
         "price": "45.00"
     }
+    ```
 
 ## How to get the url ##
 ![Shein Application Product Link](https://i.imgur.com/9CZz0nD.gif)
