@@ -42,10 +42,12 @@ These instructions will get you a copy of the project up and running on your loc
 - Method
     POST
 
-- Request body
+- Request body:
+    ```js
     {
         "url":"https://api-shein.shein.com/h5/sharejump/appsharejump?lan=en&share_type=goods&site=andshother&localcountry=other&currency=EGP&id=4655532&url_from=GM7181084488857100288"
     }
+    ```
 
 - Response
     {
