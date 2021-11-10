@@ -12,21 +12,23 @@ const cheerio = require('cheerio');
  */
 exports.getDetails = async (req, res, next) => {
     let url = req.body.url;
-    const { newUrl, productName } = await redirect(url)
-
-    //console.log(productName)
-    request(newUrl, async (error, response, html) => {
-        if (!error && response.statusCode == 200) {
-            let price = extractPrice(html);
-            //let correctedPrice = await getCurrencyDataAndCorrectThePrice(price);
-            //correctedPrice = correctedPrice.toFixed(2);
-            res.json({ productName: productName, price: price });
-        }
-    });
-
+    try {
+        // get html after redirection
+        const { newUrl, productName } = await redirect(url)
+        
+        request(newUrl, async (error, response, html) => {
+            if (!error && response.statusCode == 200) {
+                let price = extractPrice(html);
+                //let correctedPrice = await getCurrencyDataAndCorrectThePrice(price);
+                //correctedPrice = correctedPrice.toFixed(2);
+                res.json({ productName: productName, price: price });
+            }
+        });
+        
+    } catch (error) {
+        next(error)
+    }
 }
-
-
 
 /**
  * get currency info from shein website
